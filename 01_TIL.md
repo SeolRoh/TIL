@@ -1,4 +1,4 @@
-# Git 관리하기
+# GitHub 관리하기
 
 
 
@@ -179,7 +179,7 @@ Date:   Fri Dec 27 14:41:31 2019 +0900
 + 현재 코드 상태의 스냅샷을 직기 위한 파일 선택(== Staging Area에 파일 추가)
 
 ```shell
-$ git add 파일이름 #모든 변경 사항을 Stagind area로 올림
+$ git add create_TIL.bd(파일이름) #모든 변경 사항을 Stagind area로 올림
 ```
 
 
@@ -231,7 +231,25 @@ To https://github.com/SeolRoh/TIL.git
 
 
 
-### 7. 그 외 명령어
+### 7. 집
+
++ 다른 사용자 -> settings -> 허가해주기
+
+```shell
+$ git clone https://github.com/SeolRoh/TIL.git (처음만)
+
+$ git push origin master
+
+$ git status
+
+$ git commit -m "linux.md"
+
+$ git pull origin master
+```
+
+
+
+### 8. 그 외 명령어
 
 +  `git diff`  명령을 통해 이전과 이후의 변경 내용을 비교할 수 있다.
 
@@ -252,13 +270,15 @@ To https://github.com/SeolRoh/TIL.git
   \ No newline at end of file
   ```
 
-  
+
 
 ## 정리
 
 ```shell
-$ git add
+$ git add 파일이름
 $ git commit -m "commit message" 
+$ git remote add origin https://github.com/SeolRoh/woedchain.git
+$ git remote
 $ git push origin master
 ```
 
