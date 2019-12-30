@@ -240,9 +240,19 @@ $ git clone https://github.com/SeolRoh/TIL.git (처음만)
 
 $ git push origin master
 
+<<<<<<< HEAD:01_TIL.md
 $ git status
 
 $ git commit -m "linux.md"
+=======
+$ touch initial
+
+$ git add initial
+
+$ git commit -m "initial commit"
+
+$ git push origin master # GitHub의 로그인 창이 뜰 것이다.
+>>>>>>> d741828472128c9e654356c03bcaceb77daa89c3:create_TIL.md
 
 $ git pull origin master
 ```
