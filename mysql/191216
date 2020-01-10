@@ -1,0 +1,81 @@
+vagrant up
+vagrant status -> running
+vagrant ssh
+c
+ifconfig ->가상 OS아이피 확인하기
+
+yum -y install mysql-community-server
+여기서  루트가 필요하다고하면 관리자 권한이 필요하므로 
+앞에 sudo넣고
+
+sudo yum -y install mysql-community-server
+
+여기서 노패키지라고 뜨면 레파스토리 추가하면된다.
+
+sudo yum -y install http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm ->서버 설치하기 위한 경로를 하나 추가한 것. (설치 한것은 아님)
+
+그리고 이제 레파스토리를 추가했으니 이전에 했던것을 다시 함 (즉, 설치)
+sudo yum -y install mysql-community-server(이거)
+
+ip address show(아이피 확인)
+
+sudo systemctl enable mysqld 오라클 실행(기동)
+sudo systemctl start mysqld
+
+
+sudo cat /var/log/mysqld.log (이를 통해서 일시적인 패스워드 찾기)
+ ->temporary password확인 ->copy
+4oDj91UuKR-q
+그다음 mysql서버에 로그인 하기위한 계정
+mysql -uroot -p
+
+4. 패스워드 변경 관련 명령어
+
+ alter user 'root'@'localhost' identified by 'mysql';
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements ->정책때문
+정책 권한 낮춰주는 명령어
+set global validate_password_policy=LOW;
+mysql> alter user 'root'@'localhost' identified by 'test1234'; (패스워드 변경)
+
+exit -> 나가는 명령어
+$ mysql -uroot -p -> 로그인 명령어  비밀번호 test1234
+
+$ mysql -uroot -p -h192.168.56.11 -> 다른 호스트 접근하기
+
+mysql에서 데이터 베이스를 사용하기 위한 명령어
+use mysql;
+테이블 목록 보기
+show tables;
+
+ -wwy<l)By2vR
+
+$ ping 192.168.56.12
+->잘돌아가는지 확인
+
+
+create database cloud_db default character set utf8;
+show databases;
+show tables;
+
+@의 의미 어떠한 호스트여든 user1은 아이피 허용한다는 말
+
+지금 루트계정으로 디비를 만든 상태여서 user1계정으로 이 권한을 수여(설정)하기위해
+grant 라는 DCL조작어를 이용하기
+mysql> grant all privileges on cloud_db.* to 'user1'@'%' identified by 'test1234';
+
+mysql> select host, user from user;
+
+mysql> flush privileges; (지금까지 작업한것 반영)
+
+mysql -uuser1 -p -h127.0.0.1 --port 13306
+
+환경설정파일 코드
+my.cnf  ->puffy에서
+
+:wq! -> 저장exit
+
+[vagrant@node01 etc]$ ps -el | grep mysql
+
+C:/Users/HPE/Work/vagrant/.vagrant/machines/node01/virtualbox/
+
+show slave status  \G;

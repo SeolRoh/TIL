@@ -1,0 +1,17 @@
+use hr;
+create table newcustomer(
+	custid int primary key auto_increment,
+    name varchar(40) not null,
+    address varchar(30),
+    phone varchar(30) unique,
+    join_date datetime default now()
+);
+
+insert into newcustomer
+(name,address,phone)
+values('홍길동', '부산', '010-2222-5678');
+
+select * from newcustomer;
+
+delete from newcustomer
+where id<10;

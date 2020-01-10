@@ -1,0 +1,79 @@
+
+use hr;
+select job_id, avg(salary) as 'Avg Salary'
+from employees
+where job_id not like '%CLECK%'
+group by job_id
+having avg(salary) > 10000
+order by avg(salary) DESC;
+
+#6번------------------------------------------
+select concat(first_name,' ',last_name,' is a ', upper(job_id)) as 'Employee JOBs' 
+from employees
+#where last_name like '%s'
+where substr(last_name, 1,1) = 's'; 
+# -가 들어가면 뒤에서 한글자
+#case
+#when
+
+#end;
+
+#7번------------------------------------------
+select concat(first_name,' ',last_name) as 'Name'
+, salary
+, (salary * 12) + (salary * 12 * ifnull(commission_pct,0)) as 'Annual Salary'
+,if(commission_pct is not null, 'salary + commission','salary only') as 'salary type'
+from employees
+order by salary desc ;
+
+#8번------------------------------------------
+
+select DATE_FORMAT(hire_date, '%W') as 'Day of the week'
+, count(date_format(hire_date,'%w')) as 'count'
+#--요일별 인원수
+from employees
+group by 1;
+
+#9번------------------------------------------
+#모든 사원은 직속 상사 및 직속 직원을 갖는다. 단 최상위 또는 최하위 직원은 직속 상사 및 직원이 없다
+#소속된 사원들 중 어떤 사원의 상사로 근무중인 사원의 총수를 출력하시오
+select count(distinct manager_id)
+from employees;
+
+#10번------------------------------------------
+#각 사원이 소속된 부서별로 급여 합계 , 급여평균, 급여, 최대값, 급여 최소값을 집계하고자한다. 
+#계산된 출력 값은 6자리와 세자리 급여기호, $표시와 함계 출력하고 부서번호의 오름차순을 정렬하시오
+#단, 부서에 소속되지 않은 사원에 대한 정보는 제외하고 출력시 머리글은 별칭(alias)처리하시오
+#-group by, sum,avg,max,min, 출력양식을 바꾸는 format(값,표현 자리수)
+select department_id
+,count(department_id) as 'COUNT'
+, concat('$',format(sum(salary), 0)) as 'Sum salary' 
+, concat('$',format(avg(salary),2)) as 'avg salary'
+, concat('$',format(max(salary),0)) as 'max salary'
+, concat('$',format(min(salary),0))as 'min salary'
+from employees
+where department_id is not null
+group by department_id;
+
+#조인
+select emp.employee_id
+, emp.first_name
+, dept.department_id
+, dept.department_name
+from employees as emp left outer join departments as dept
+on emp.department_id = dept.department_id
+where emp.employee_id = 178
+
+order by emp.employee_id;
+
+
+select emp1.employee_id
+, concat(emp1.first_name,' ' ,emp1.last_name) as name
+, concat(emp2.first_name,' ' ,emp2.last_name) as 'manager name'
+, emp1.manager_id
+from employees emp1 left outer join employees emp2
+on emp1.manager_id = emp2.employee_id;
+
+select *
+from employees
+
