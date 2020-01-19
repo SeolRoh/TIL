@@ -116,4 +116,10 @@
    
    ```
 
+   ## 약간의 TIP
    
+   keystonerc_admin 파일 안에 들어가 마지막 줄에 해당 명령어를 넣어준다.
+   
+   `export PSI='[\u@h \W(keystonerc_admin)]\$'`
+   
+   그러면 `. keystonerc_adming` 으로 접속시 접속 여부를 확인할수 있다. 
