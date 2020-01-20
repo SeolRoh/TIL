@@ -4,7 +4,7 @@
 
 1. Amazon EC2 Linux 인스턴스 시작하기 [AWS_EC2_Linux_instance.md](https://github.com/SeolRoh/TIL/blob/master/Module_project/AWS/AWS_EC2_Linux_instance.md)
 
-2. NoSQL 테이블 생성 및 쿼리
+2. NoSQL 테이블 생성 및 쿼리 [NoSQL_table_create.md](https://github.com/SeolRoh/TIL/blob/master/Module_project/AWS/NoSQL_table_create.md)
 
 3. Elastic Beanstalk 사용 시작(Platform은 도커로) [Elastic_Beanstalk_use(platform_docker).md](https://github.com/SeolRoh/TIL/blob/master/Module_project/AWS/Elastic_Beanstalk_use(platform_docker).md)
 
