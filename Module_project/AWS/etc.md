@@ -56,6 +56,14 @@ yum install -y php72
 yum install -y php72-mysql*
 service httpd restart
 ------------------------------------------------------
+yum install httpd
+systemctl start(enable) httpd
+cd network/html
+cd index.html
+this is the My Hompage
+
+-> 이후에 이미지 생성
+------------------------------------------------------
 
 a1student1
 a1student2
