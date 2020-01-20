@@ -184,14 +184,14 @@
          2440 #filesystem_store_datadir = /var/lib/glance/images
          2441 #filesystem_store_datadir=/var/lib/glance/images/
       
-         **주석제거
-         3213 swift_store_auth_version = 2
+         **주석제거 반드시 버전은 2말고 3으로
+         3213 swift_store_auth_version =3
          
          **swift서비스의 인증 정보 추가
          3222 swift_store_auth_address = http://10.0.0.200:5000/v3 (cat keystonerc_admin)
          
-         **swift서비스의 프로젝트와 사용자이름 추가
-         3230 swift_store_user = service:swift 
+         **swift서비스의 프로젝트와 사용자이름 추가 : 이건 대시보드 들어가서 서비스이름확인
+         3230 swift_store_user = services:swift 
          
          **answerfile.txt로 해당 키 확인 가능
          [root@controller ~(keystone_admin)]# grep SWIFT answerfile.txt 
@@ -205,10 +205,10 @@
       CONFIG_SWIFT_STORAGE_SIZE=2G
       
         **keystone을 사용해서 생성한 swift 사용자의 인증 패스워드를 정의한다.
-        3239 swift_store_key = 90c4295d6199416c
+        3239 swift_store_key =90c4295d6199416c
         
         **오브젝트 스토리지 서비스도 이미지 저장 장치로서 추가한다.
-        2991 swift_store_create_container_on_put = true
+        2991 swift_store_create_container_on_put =True
         
         **사용할 컨테이너 이름을 지정한다.
         2921 swift_store_container = glance
