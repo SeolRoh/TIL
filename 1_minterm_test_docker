@@ -1,0 +1,11 @@
+-----------------------------------------------------------------------------------------------------------
+/ # history-stack
+docker stack deploy -c /stack/todo-mysql.yml seol_todo_mysql
+docker stack deploy -c /stack/exam-app.yml seol_todo_app
+docker stack deploy -c /stack/visualapp.yml visualization
+docker stack deploy -c /stack/todo-frontend.yml seol_todo_frontend
+docker stack deploy -c /stack/todo-ingress.yml seol_todo_ingress
+
+-----------------------------------------------------------------------------------------------------------
+ docker exec -it manager docker network create --driver=overlay --attachable seol_todoapp
+
