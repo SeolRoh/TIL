@@ -10,7 +10,7 @@
 
 01.intro_TeamProject
 
-​	javascript의 기본 용어, 조건문, 명령어 작성
+​	javascript의 기본 용어, 조건문, 반복문, 배열, 명령어 작성
 
 
 
