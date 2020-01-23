@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <head>
+        <script>
+            let comNum = Math.floor(Math.random() * 100);
+            for(let i=1; i<=10; i++){
+                let userNum = Number(prompt(i+ "Time Guess The number"));
+                if(comNum > userNum) alert("UP");
+                else if(comNum < userNum) alert("DOWN");
+                else {
+                    console.log("Success!! : "+ i + " times");
+                    break;
+                } 
+            }
+        </script>
+    </head>
+</body>
+</html>

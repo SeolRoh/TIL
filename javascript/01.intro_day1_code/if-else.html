@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function do_Grade(){
+            let kor = Number(prompt("input kor"));
+            let eng = Number(prompt("input eng"));
+            let math = Number(prompt("input math"));
+            let sum = kor+eng+math;
+            let result = (kor+eng+math) / 3 ;
+            let grade = "";
+
+            if(result >= 90) grade = "A";
+            else if(result >= 80) grade = "B";
+            else if(result >= 70 ) grade = "C";
+            else grade = "F";
+
+            alert("You have "+ grade);
+            console.log("sum = " + sum);
+        }
+        let result= 90;
+        console.log("average = " + result);
+        
+        switch(true) {
+            case result>=90:
+                console.log("A");
+                break;
+            case result>=80:
+                console.log("B");
+                break;
+            case result>=70:
+                console.log("C");
+                break;
+            default:
+                console.log("F");
+                break;
+        }
+    </script>
+</head>
+</html>
