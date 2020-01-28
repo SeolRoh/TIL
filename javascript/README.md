@@ -6,7 +6,7 @@
 
 ---
 
-01.intro_md [01.intro.md](https://github.com/SeolRoh/TIL/blob/master/javascript/01.intro.md)
+01.intro[01.intro.md](https://github.com/SeolRoh/TIL/blob/master/javascript/01.intro.md)
 
 01.intro_TeamProject [01.Intro_TeamProject.md](https://github.com/SeolRoh/TIL/blob/master/javascript/01.Intro_TeamProject.md)
 
@@ -16,4 +16,4 @@
 
  intro 파일의 소스 코드 디렉토리
 
-​	
+02.function_array  [02.function_array.md](https://github.com/SeolRoh/TIL/blob/master/javascript/02.function_array.md)
