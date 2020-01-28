@@ -1,0 +1,26 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <script>
+            let students = [];
+            students.push({name:'AAA', korean:90, Mathmatics:82, English:95});
+            students.push({name:'BBB', korean:91, Mathmatics:83, English:96});
+            students.push({name:'CCC', korean:92, Mathmatics:84, English:97});
+            students.push({name:'DDD', korean:93, Mathmatics:85, English:98});
+            students.push({name:'EEE', korean:94, Mathmatics:86, English:99});
+            
+            let sum = [];
+            let avg = [];
+            for(let i in students){
+                console.log(students[i].name);
+                with(students[i]){
+                    console.log(korean + " " + Mathmatics + " " + English);
+                    sum.push(korean+Mathmatics+English);
+                    avg.push(sum/students.length);
+                    
+                }
+                console.log("sum " + sum[i] + " avg " + Number(avg[i]));
+            }
+        </script>
+    </head>
+</html>

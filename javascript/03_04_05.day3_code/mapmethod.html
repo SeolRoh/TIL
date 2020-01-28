@@ -1,0 +1,23 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <script>
+            let array = [50,203,227,2,158];
+            //순차적으로 출력
+            //array[0]; array[1];
+            //for문 이용 
+            let grade = array.map(function(element)
+						{
+								if(element >= 90){console.log("A"); break;}
+								else if(element >= 80){console.log("B"); break;}
+								else if(element >= 70) {console.log("C"); break;}
+								else { console.log("F"); break;}
+						
+							}
+						);
+            grade.forEach(function(element){
+                console.log(element);
+            });
+        </script>
+    </head>
+</html>

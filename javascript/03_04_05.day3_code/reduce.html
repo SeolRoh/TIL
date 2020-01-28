@@ -1,0 +1,15 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <script>
+					let array = [1,2,3,4,5];
+
+					let output ='';
+					array.reduce(function (previousValue, currentValue, index, array){
+						output += previousValue + ' : ' +currentValue+ ' : '+ index + '\n';
+					});
+
+					console.log(output);
+        </script>
+    </head>
+</html>

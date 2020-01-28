@@ -1,0 +1,26 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <script>
+            let person ={
+                name: 'seol',
+                address: 'seoul',
+                eat: function (food) {
+                    console.log(food +"을 먹었습니다.");
+                }
+            };
+
+            let school = {
+                name: 'campus',
+                capacity: [30,30,30],
+                //grade= '3',
+                event:function(month, eventName) {
+                    console.log(this.name+ ', '+month + "달에 " + eventName + " 이벤트가 있습니다. ");
+                }
+            };
+            console.log(person.name);
+            person.eat('banana');
+            school.event('1월','졸업식');
+        </script>
+    </head>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function Student(name, kor,eng,mat, sci){
+                this.name=name; this.korean = kor; this.english = eng;
+                this.mathmatics=mat; this.science=sci;
+                this.sum=function(){
+                    return this.korean+this.english+this.mathmatics+this.science;
+                };
+
+                this.avg=function(){
+                    return this.sum() / 4;
+                };
+            }
+
+            let Student1 = new Student('Leedowon',100,90,80,70);
+            let Student2 = new Student('seolroh',80,85,88,99);
+            console.log = (Student1.avg);
+            console.log = (Student2.avg);
+        </script>
+    </head>
+    <body>
+        가나다라
+    </body>
+</html>

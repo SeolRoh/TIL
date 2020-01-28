@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let student = {};
+            student.name='seol';
+            student.kor= 100;
+            student.mat=90;
+            student.eng=85;
+
+            let sum=0;
+            let avg=0;
+
+
+            sum = student.kor + student.eng + student.mat;
+            avg = sum / 3;
+
+            // 지금 부터 student 안에 속해 있는 객체를 사용합니다.
+            with(student){
+                sum = kor + eng + mat;
+                avg = sum / 3;
+            }
+
+            console.log("총점 "+ sum);
+            console.log("평균 "+ avg);
+        </script>
+    </head>
+</html>
