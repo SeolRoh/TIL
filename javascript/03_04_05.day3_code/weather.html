@@ -2,7 +2,7 @@
 <html>
     <head>
         <script>
-					let weather = `{"coord": { "lon": 139,"lat": 35},
+					let openapi = `{"coord": { "lon": 139,"lat": 35},
 													"weather": [
 														{
 															"id": 800,
@@ -44,12 +44,13 @@
 
 													console.log(openapi);
 													console.log(typeof openapi);
-													//javascript object로 변경
-													//현재온도, 최고, 최저온도,...
+													//javascript object? ??
+													//????, ??, ????,...
 													let parsedJson = JSON.parse(openapi);
-													console.log("현재온도: "+ parsedJson.main.temp);
-													console.log("최고온도: "+ parsedJson.main.temp_max);
-													console.log("최저온도: "+ parsedJson.main.temp.min);
+													console.log("????: "+ parsedJson.weather[0].main );
+													console.log("????: "+ parsedJson.main.temp);
+													console.log("????: "+ parsedJson.main.temp_max);
+													console.log("????: "+ parsedJson.main.temp.min);
 				 </script>
     </head>
 </html>
