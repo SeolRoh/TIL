@@ -17,3 +17,7 @@
  intro 파일의 소스 코드 디렉토리
 
 02.function_array  [02.function_array.md](https://github.com/SeolRoh/TIL/blob/master/javascript/02.function_array.md)
+
+02.function_array_day2_code [02.function_array_day2_code](https://github.com/SeolRoh/TIL/tree/master/javascript/02.function_array_day2_code)
+
+ function_array 파일의 소스 코드 디렉토리
