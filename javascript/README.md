@@ -21,3 +21,13 @@
 02.function_array_day2_code [02.function_array_day2_code](https://github.com/SeolRoh/TIL/tree/master/javascript/02.function_array_day2_code)
 
  function_array 파일의 소스 코드 디렉토리
+
+03.Object
+
+04.new_keword
+
+05.Build_in_Object
+
+03_04_05.day03_code
+
+ day3의 소스 코드 디렉토리
