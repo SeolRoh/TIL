@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let weather_json = 
+        `{ 
+            "weather": [{
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+                }],
+            "base": "model",
+            "main": {
+                "temp": 7.7,
+                "temp_min": 2.3,
+                "temp_max": 10.6,
+                "humidity": 41
+            },
+            "wind": {
+                "speed": 1.94
+            },
+            "dt": 1580272501
+        }`; 
+        let _img = document.getElementById("_img");
+        let _temp = document.getElementById("_temp");
+        let _temp_min_max = document.getElementById("_temp_min_max");
+        let _wind = document.getElementById("_wind");
+
+        let parsedWeather = JSON.parse(weather_json);
+
+        window.onload = function(){
+            let _img = document.getElementById("_img");
+            let _temp = document.getElementById("_temp");
+            let _temp_min_max = document.getElementById("_temp_min_max");
+			let _humidity = document.getElementById("_humidity");
+            let _wind = document.getElementById("_wind");
+
+            // _img.innerHTML = "<img src ='http://openweathermap.org/img/wn/"+parsedWeather.weather[0].icon+"@2x.png'>";
+            _img.src = "http://openweathermap.org/img/wn/"+parsedWeather.weather[0].icon+"@2x.png";
+            
+            _temp.innerText= "현재온도 "+ parsedWeather.main.temp +"˚ " + parsedWeather.weather[0].main;
+            _temp_min_max.innerText= "최저온도 " + parsedWeather.main.temp_min + "˚ | " + "최고온도 " + parsedWeather.main.temp_max + "˚";
+            _wind.innerText= " 풍속 " + parsedWeather.wind.speed + "m/s";
+			_humidity.innerText = "습도 " + parsedWeather.main.humidity + "%";
+        };
+
+    </script>
+    
+    <body>
+        <table>
+            <tr>
+                <td rowspan="2" id="_img"><img src= "http://openweathermap.org/img/wn/04d@2x.png"> </td>
+				
+				<td colspan="2" id ="_temp">현재온도: 10도, 맑음</td>
+            </tr>
+            <tr>
+                <td id= "_temp_min_max" style="color: blue;">최저온도|최고온도</td>
+				<td> | </td>
+				<td id= "_wind" style="color:crimson;" >풍속</td>
+				<td> | </td>
+				<td id= "_humidity" > * 습도</td>
+            </tr>
+
+        </table>
+
+    </body>
+</html>

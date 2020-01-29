@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+            window.onload = function(){
+            //document.body.innerHTML = "<h1 style='color: blue;'> Hello,Dowon . Hi, there</h1>";
+            //getElementById()
+            //document.getElementById("myDiv1"); // 데이터가 없다면 undefinded 있으면 body에서 반환 할예정
+            let div1 = document.getElementById("myDiv1");
+            div1.innerHTML = "<h1 style='color: blue;'> Hello,Seol . Hi, there</h1>";
+
+            document.body.removeChild(document.getElementById('myH1'));
+            }
+        </script>
+	</head>
+	<body>
+        <h1 id="myH1">Hello Dom</h1>
+        <div id="myDiv1">
+            ~~~here
+        </div>
+	</body>
+</html>

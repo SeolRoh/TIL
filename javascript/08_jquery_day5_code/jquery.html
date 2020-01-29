@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<!--<script src="../jquery/jquery.js"></script> -->
+	<script src = "https://developers.google.com/speed/libraries/devguide#jquery"></script>
+	<script>
+	$(document).ready(function(){
+		// alert("jQuery start");
+		$('#myH1').css('color','red');
+
+		$('#btnRed').on('click',function(){
+			$('btnRed').css('color','red');
+		});
+
+		$('#btnBlue').on('click',function(){
+			$('btnBlue').css('color','blue');
+		});
+	});
+	</script>
+</head>
+<body>
+	<h1 id="myH1"> Hello, JQuery</h1>
+	<button id="btnRed">RED</button>
+	<button id="btnBlue">BLUE</button>
+</body>
+</html>

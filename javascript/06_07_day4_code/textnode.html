@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+            window.onload = function(){
+            
+            let _ul = document.createElement("ul");
+            let _li1 = document.createElement("li");
+            let _li2 = document.createElement("li");
+            let _naver = document.createTextNode("Naver");
+            let _daum = document.createTextNode("Daum");
+            
+            _li1.appendChild(_naver);
+            _li2.appendChild(_daum);
+            
+            _ul.appendChild(_li1);
+            _ul.appendChild(_li2);
+
+            document.body.appendChild(_ul);
+            
+            //add image tag
+            let myImg = document.createElement("img");
+            myImg.src= 'https://user-images.githubusercontent.com/34231229/73322857-dda84780-4288-11ea-83f3-54298ad1e60e.JPG';
+            myImg.width = 150;
+            myImg.height = 150;
+            document.body.appendChild(myImg);
+            }
+        </script>
+	</head>
+	<body>
+        <h1>Hello Dom!</h1>
+        <ul>
+            <li>Naver</li>
+            <li>Daum</li>
+        </ul>
+	</body>
+</html>
