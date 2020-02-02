@@ -7,7 +7,8 @@
 시작 전 
 1. Visual Studio Code - JavaScript (ES6) code snippets install
 
-2. Chrome 웹 확장 프로그램 설치 - JSON Formatter 
+2. Chrome 웹 확장 프로그램 설치 - JSON Formatter 	
+- JSON formatter&validator 기능을 지원한다. 복잡한 Json을 보기 쉽게 해주고, 설치 후에 브라우저에서 .Json 파일을 열면 자동으로 데이터가 구조화 되어 나타난다. 굳!
 
 ---
 
