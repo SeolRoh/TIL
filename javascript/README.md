@@ -4,7 +4,14 @@
 
 웹퍼블리셔를 위한 프론드엔드 기초
 
+시작 전 
+1. Visual Studio Code - JavaScript (ES6) code snippets install
+
+2. Chrome 웹 확장 프로그램 설치 - JSON Formatter 
+
 ---
+
+
 
 01.intro[01.intro.md](https://github.com/SeolRoh/TIL/blob/master/javascript/01.intro.md)
 
