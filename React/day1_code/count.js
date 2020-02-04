@@ -90,6 +90,8 @@ class Counter extends Component{
 
                 {
                     this.state.count == 3 && <ErrorObject />
+                    // count가 3일 경우에 한해서 에러 오브젝트 발생시키기
+                    //3일경우 에러 객체가 나온다. 상단에 보면 에러 오브젝트 값을 보면 에러를 만들어 버림을 알 수 있다.
                 }
 
                 <button onClick={this.handleIncrease}>+</button>
