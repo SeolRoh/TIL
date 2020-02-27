@@ -12,5 +12,8 @@ Today I Learned
 4. Docker와 Kubernetis
 5. javascript
 6. 기타 - 모듈 프로젝트
-7. final 프로젝트
+7. React
+8. JAVA - intelliJ
+9. Spring
+10. final 프로젝트
 
