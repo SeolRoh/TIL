@@ -6,25 +6,27 @@ Today I Learned
 
 > TIL은 **T**oday **I** **L**earned의 줄임말
 
-1. 데이터베이스 - mysql
+1. Algorithm 공부_ Java
 
-2. 리눅스
+2. 데이터베이스 - mysql
 
-3. 오픈스택으로 구현하는 클라우드 컴퓨팅
+3. 리눅스
 
-4. Docker와 Kubernetis
+4. 오픈스택으로 구현하는 클라우드 컴퓨팅
 
-5. javascript
+5. Docker와 Kubernetis
 
-6. 기타 - 모듈 프로젝트
+6. javascript
 
-7. React
+7. 기타 - 모듈 프로젝트
 
-8. JAVA - intelliJ
+8. React
 
-9. Spring
+9. JAVA - intelliJ
 
-10. final 프로젝트 - 비식별화
+10. Spring
+
+11. final 프로젝트 - 비식별화
 
     
 
