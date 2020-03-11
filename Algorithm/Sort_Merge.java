@@ -26,7 +26,7 @@ public class Sort_Merge {
         }
         int part1 = start; // 첫번째 방의 인덱스를 파트2개로 나눔
         int part2 = mid + 1; // 중간기준을 기준으로
-        int index = start; // 양쪽방에 작은값을 하나씩 복사할때마다 결과 배열방 어디에 저장할지 알아야하니 복사 후 하나씨 ㄱ늘려 다음에 저장할 곳을 기억해야한다.
+        int index = start; // 양쪽방에 작은값을 하나씩 복사할때마다 결과 배열방 어디에 저장할지 알아야하니 복사 후 하나 씩 늘려 다음에 저장할 곳을 기억해야한다.
         while (part1 <= mid && part2 <= end){
             if(tmp[part1] <= tmp[part2]) {
                 arr[index] = tmp[part1];
