@@ -18,7 +18,7 @@ public class Sort_Merge {
             mergeSort(arr, tmp, mid+1, end);
             merge(arr,tmp,start,mid,end);
         }
-    }
+    } 
     public static void merge(int[] arr, int[] tmp, int start, int mid, int end){
         //임시 저장소에 필요한 만큼 복사를 한다.
         for(int i=start ; i<=end; i++){
