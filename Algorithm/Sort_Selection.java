@@ -9,7 +9,7 @@ public class Sort_Selection {
         temp = x;
         x = y;
         y = x;
-    }
+    } 
     public static void main(String[] args) {
         int[] Array = {3,5,4,2,1};
         int temp = 0;

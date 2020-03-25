@@ -17,8 +17,8 @@ public class Sort_Merge {
             mergeSort(arr, tmp, start, mid);
             mergeSort(arr, tmp, mid+1, end);
             merge(arr,tmp,start,mid,end);
-        }
-    } 
+        } 
+    }  
     public static void merge(int[] arr, int[] tmp, int start, int mid, int end){
         //임시 저장소에 필요한 만큼 복사를 한다.
         for(int i=start ; i<=end; i++){
@@ -46,7 +46,6 @@ public class Sort_Merge {
         for (int data: arr
              ) {
             System.out.print(data+ " ");
-
         }
     }
     public static void main(String[] args) {
