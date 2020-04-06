@@ -14,7 +14,20 @@
 
 ### 용어정리
 
-1. 
+1. Spring Framwork 란? 
+
+   1. Java 플랫폼의 오픈소스 애플리케이션 프레임워크
+   2. 자바 엔터프라이즈 개발을 편하게 하는 오픈 소스 경량급 Framework
+   3. *자바SE로 된 자바 객체(POJO)를 자바EE에 의존적이지 않게 연결해주는 역할*
+   4. Dynamic 웹 사이트 개발 
+   5. 대한민국 전자 정부 표준 프레임워크 기반 기술
+
+2. Framwork란?
+
+   1. 개발할 때 필요한 설계의 기본, 베이스, 구조
+   2. 재사용, 확장 가능한 라이브러리
+
+   
 
 
 
@@ -23,4 +36,10 @@
 #### 출처
 
 이러쿵 저러쿵 블로그 https://ooz.co.kr/170
+
+POJO (Plain Old Java Object, 평범한 자바빈즈 Javabeans 객체) 
+
+https://ko.wikipedia.org/wiki/Plain_Old_Java_Object
+
+
 
