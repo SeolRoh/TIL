@@ -12,7 +12,11 @@
 
 ---
 
+사용 프로그램 : MyBatis, JPA(Java Persistence architecture)
+
 ### 용어정리
+
++ `logic`
 
 1. Spring Framwork 란? 
 
@@ -31,7 +35,15 @@
 
    부품들을 생성하고, 제품을 조립해주는 공정과정을 대신해 주는 라이브러리(역할자)
 
-4. 
+4. TestContext Framework
+
+5. DAO(Data Access Object)
+
+6. JDBC(java Database connectivity)
+
+7. ORM(Object Relational Mapping)
+
+8. Spring MVC(Model View Controller)
 
 
 
@@ -40,6 +52,10 @@
 ---
 
 #### 출처
+
+spring.io -> docs 페이지
+
+https://docs.spring.io/spring/docs/5.1.14.RELEASE/javadoc-api/
 
 이러쿵 저러쿵 블로그 https://ooz.co.kr/170
 
