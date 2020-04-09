@@ -35,15 +35,7 @@
 
    부품들을 생성하고, 제품을 조립해주는 공정과정을 대신해 주는 라이브러리(역할자)
 
-4. TestContext Framework
-
-5. DAO(Data Access Object)
-
-6. JDBC(java Database connectivity)
-
-7. ORM(Object Relational Mapping)
-
-8. Spring MVC(Model View Controller)
+4. 
 
 
 
