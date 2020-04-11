@@ -118,11 +118,11 @@ build path - configure build path - .jal파일 add
 
 ---
 
-#### JDBC (Java Database Connectivity)
+#### JDBC (Java Database Connectivity)  종속성 지양 <중요>
 
 인터페이스와 구현을 분리 시켜놓은 구조
 
-개발자가 종속되지 않고 벤더 독립적으로 개발 할 수 있도록 했다.
+개발자가 **종속**되지 않고 벤더 독립적으로 개발 할 수 있도록 했다.
 
 Database를 바꿀 때 용이하다.
 
