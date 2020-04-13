@@ -128,7 +128,7 @@ Database를 바꿀 때 용이하다.
 
 #### JDBC 작성절차
 
- 	1. Driver 등록
+ 	1. Driver 등록 - Driver Class Loading
  	2. DBMS와 연결 - 이 DB와 실제 연결을 담당하는 객체. Connection 클래스 객체
  	3. Statememt 객체생성 - Statement는 SQL Query를 실행해주는 역할.
  	4. SQL 전송
@@ -139,15 +139,17 @@ Database를 바꿀 때 용이하다.
 
 ​		1. Driver 등록  (드라이버 클래스를 찾아서 등록해야하는게 가장 먼저할일)
 
-​			Class.forName("Oracle.jdbc.driver.OracleDriver");
+​			**Class.forName("Oracle.jdbc.driver.OracleDriver");**
 
 ​			// (DB벤더가 만듦) "" 안에있는 클래스를 찾아서 생성한다.
 
 ​			//new Class 대신에 Class.forName(); 으로 스레드 객체를 만들어도 된다.
 
+​			// *Class path로 해당 파일을 찾아서 , 객체를 생성하도록 해주는 역할for(Name)*
+
 ​			//왜 여기서 new 말고 forName();을 사용하는게 좋을까? new로하면 컴파일을 다시 해야한다.
 
-​			// 벤더 중립적으로 만드려고 노력한 것같다.
+​			// <u>벤더 중립적</u>으로 만드려고 노력한 것같다.
 
 ​		2. DBMS와 연결
 
@@ -157,7 +159,7 @@ Database를 바꿀 때 용이하다.
 
 ​																					String user,String password ) throws SQLException 
 
-​			Connection conn =       DriverManager.getConnection(             	
+​			**Connection conn =       DriverManager.getConnection(**             	
 
 ​													“jdbc:oracle:thin:@192.168.0.200:1521:VCC”,  “SEXXXXX”, “SEXXXXX” ); 
 
