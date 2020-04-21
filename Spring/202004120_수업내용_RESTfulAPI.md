@@ -28,11 +28,17 @@
 >
 > :request.getParameter("userid")
 
-@ModelAttribute
+**@ModelAttribute**
 
 :form data 값을 추출해서 VO객체에 자동으로 저장해주는 어노테이션
 
-Encoding
+**@PathVariable**
+
+ : userDetail.do?userid=gildong  @RequestParam 
+
+ : userDatail.do/gildong  @PathVariable
+
+**Encoding**
 
 요청(request) 데이터 인코딩 - **요청에 따라 개별적으로 인코딩해야한다.**
 
@@ -42,7 +48,17 @@ Encoding
 
  Spring 에서 CharacterEncodingFilter클래스를 제공한다.
 
-web.xml에 Filter설정
+응답(response) 데이터 인코딩
+
+: response.setContentType("text/html;charset=utf-8")
+
+<%@ page contentType="text/html;charset=utf-8" %>
+
+
+
+**web.xml에 Filter설정** 
+
+: DispatcherSerlvet 에게 web tier 설정을 담당하는 xml 정보를 설정
 
 <filter>
 
@@ -60,11 +76,30 @@ web.xml에 Filter설정
 
 </filter-mapping>
 
-응답(response) 데이터 인코딩
 
-:response.setContentType("text/html;charset=utf-8")
 
-<%@ page contentType="text/html,charset=utf-8" %>
+**web.xml의 DispatcherServlet의 url-pattern 변경**
+
+ *. do -> /  
+: tomcat이 내부적으로 호출하는 DefaultServlet의 url-pattern 도 /
+: spring 이 제공하는 DispatcherServlet의  url-pattern 도 /
+: url 패턴 충돌의 문제가 발생
+
+web tier 의 설정을 담당하는 Spring Beans Config xml 새로 작성 (spring_beans_web.xml)
+: <mvc:default-servlet-handler />
+: <mvc:annotation-driven />
+
+@Controller Bean의 scanning을 기존에는 spring_beans.xml 에서 담당했지만 exclude 시킴
+<context:component-scan base-package="myspring.user">
+   <!-- @Controller 어노테이션을 선언한 컴포넌트는  제외하겠다. -->
+   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
+
+@Controller Bean의 scanning을 spring_beans_web.xml 에서 include 시킴
+<context:component-scan base-package="myspring.user">
+   <!-- @Controller 어노테이션을 선언한 컴포넌트는  포함하겠다. -->
+   <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
 
 
 
@@ -77,6 +112,14 @@ HTTP와 URI기반으로 자원에 접근할 수 있도록 제공하는 애플리
 GET / POST / DELETE / PUT 약속
 
 읽기 / 등록 / 삭제 / 수정 
+
+
+
+xml parsing
+<name>홍길동</name>
+<addr>서울</addr>
+
+
 
 json은 xml보다 경량(lightweight)하다.
 
