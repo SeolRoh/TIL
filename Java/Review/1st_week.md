@@ -382,9 +382,61 @@
 
       그림 출처) Opentutorials.org 블로그 https://opentutorials.org/module/516/6061
 
-16. abstract(1/3):문법
+16. abstract(1/3):문법 
 
-    + 
+    + 추상 메소드는 정의된부분이 비어져있다. *하단의 주석처리부분 참고
+    
+    + 추상 클래스내 추상 메소드를 사용해서 직접적으로 인스턴스화하여 사용할수 없다.
+    
+    + 사용하고자 한다면 반드시 `상속을 강제` 한다. + `override`
+    
+    + 추상클래스(설계자), 실행요원(클래스1), 실행요원2(클래스2)
+    
+    + 자식클래스 내부에 super도 함께 쓰이곤한다.
+    
+      ```java
+      abstract class A{
+          public abstract int b();
+          //아래는 에러 발생!! 본체가 있는 메소드는 추상화 키워드를 가질수 없다.
+          //public abstract int c(){System.out.pringln("Hello");}
+          public void d(){
+              System.out.println("world");
+          }
+      }
+      class B extends A{
+          //override했음을 알수 있다.
+          public int b(){
+              return 1;
+          }
+      }
+      public class DemoAbstract {
+          public static void main(String[] args) {
+              B obj = new B();
+              System.out.println(obj);
+          }
+      }
+      ```
+    
+    + abstract를 사용하는 이유?
+    
+      + 실제 동작 방법은 abstract를 상속받은 하위클래스의 책임으로 설정한다.
+      + 규모가 큰 프로젝트에서 사용하면 좀 낫다.
+      + 모든 클래스의 공통분모를 상위클래스에 두어서 코드중복이나, 유지보수가 편할수 있다.
+    
+    + abstract pattern
+    
+17. final(1/1):필드, 메소드, 클래스
+
+    + `상속이나 변경을 금지하는 규제` | abstract와 정반대
+
+      ```java
+      // 바뀌지 않는 절대의 값
+      static final double PI = 3.24;
+      ```
+
+    + final 메소드로 생성된 b를 상속할수 없다. + 오버라이딩도 불가능하다.
+
+    + final 클래스도 마찬가지로 상속할수 없다. 
 
 ------
 
