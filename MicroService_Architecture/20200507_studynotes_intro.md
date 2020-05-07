@@ -50,7 +50,11 @@ Load Distribution-로드발란싱ribbon (client side)
 
 Visiiliity and monitoring-zipkin distributed tracing
 
--netflex API gateway
+-netflex API gateway(권한 인증, 권한 제어와 보안을 작업,)
 
-Fault Tolerance-hystrix
+Fault Tolerance(문제가 생기는 서비스가있으면 우회하여 제공.)-hystrix
+
+
+
+웹앱으로 만들수 있는 것들은 모두 마이크로서비스로 개발 가능하다.
 
