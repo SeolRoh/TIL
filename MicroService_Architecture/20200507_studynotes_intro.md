@@ -58,3 +58,251 @@ Fault Tolerance(문제가 생기는 서비스가있으면 우회하여 제공.)-
 
 웹앱으로 만들수 있는 것들은 모두 마이크로서비스로 개발 가능하다.
 
+
+
+SOA(Service oriented Architecture)와 MSA차이
+
+SOA - 여러개의 서비스를 한 데모아 같이 관리하고 운영 / web service(SOAP 사용)- 필수적으로 어떠한데이터가 어떠한 요청으로 가는지 header와 body 정의 필, WSDL이라고 어떠한 리소스가 들어가는지 정의되는 문서 존재.
+
+MAS - 각각의 서비스들이 RESTapi를 기반으로 운영하고 송수신, 로드발란서 지원  -- +a = 이를 Cloud Native 환경
+
+		- http프로토콜과 메소드 보내고 GET PUT POST DELETE를 이용하여 정의
+
+각각의 서비스 공유를 최대화/최소화 차이
+
+
+
+REST
+
++ Level 0
+  + localhost:0000/user
+  + localhost:0000/userlist
+  + localhost:0000/userinfo
++ Level 1 
+  + localhost:0000/user
+  + localhost:0000/user/10
++ Level2
+  + Level1 + Http Methods(GET POST PUT DELETE)
++ Level3
+  + Level2 + HATAOAS
+  + 링크적으로 전달해주는 방식 12345번이면 서로 별모양으로 통신하듯이
+  + 가급적 복수형 명사형 형태로 만듦 (예외 제외 - 고유명사일때)
++ Response Status
+  + 200-Succees
+  + 201-Created 
+  + 400 번대 - client잘못
+    + 405-Clent 호출 잘못 (ex 지원하지 않는 메소드 호출시)
+  + 500 - Server
+
+
+
+Cloud Native 환경 Application
+
+클라우드 네이티브 환경에서 SaaS나 F(function)aaS 형태로 서비스되는 Application
+
+MSA들을 올려서 다양하게 서비스하거나 Application을 배포
+
+
+
+**형상관리** 
+
+**12 개의 Factors**
+
+1. **CodeBase**
+   + Application 집중하는데 있어서 코드를 한곳에 보관해야한다. (ex cloud) 
+   + 하나의 단일 코드관리 저장소 필
+   + 운영환경에 맞춘 다양한 CodeBase를 만드는 것도 좋다. (개발상태, 테스트 상태, 운영상태 레파지토리)
+2. Dependency(독립성) Isolation
+   + AOP library / CI library,,, 팀원들끼리 공유가 되어져야한다.
+   + ex) pom.xml 파일만 동일하게 작성한다면 `.jar`파일이 생성되어 직접 설치하는 번거로움X
+3. Configuration
+   + 환경설정공간 (ex 자주사용 -> git 형상관리 tool / history를 같이 관리 가능)
+4. Backing Services
+   + 백단에서 관리할수 있는.  cloud환경에서 필요한 백업시스템 구현
+   + DB같은거 백업
+5. Build, Release, Run
+   + 컴파일 -> 패키징 -> 실행
+   + 각각 독립적으로 수행
+   + Dev, QA, Production 환경에서도 각각의 build, release,Run이 수행되어져야 함.
+6. Process
+   + 하나의 어플리케이션이 다른쪽에 종속이 지양
+7. Port binding
+   + 기존에 사용하던 포트를 적절하게 다른환경에 맞춰서 서비스가 될 수 있도록 하는 것.
+   + 포트가 자유롭게 전환 될수 있어야함
+8. Concurrency
+   + Must be able to span multiple machines, or containers
+9. Disposability
+   + 필요하지않는 데이터는 즉시적으로 삭제되어져야함
+   + Enhances scalability and fault tolerance
+10. Dev.Prod parity
+    + 운영, 테스트, 개발 환경들이 각 독립적으로 나뉘어져 실행되어져야함
+    + 환경자체를 분리해서 사용 DB도 분리해서 테스트
+11. Logs
+    + Logging as a Service
+    + 로그 단의 개별적으로 분리시켜 서비스 할 수도있다. -> 정확한 로그를 확인하기 위해 (디버그나 사용자가 호출한 내역 확인을 위함)
+    + 로그 확인을 위해 print문장을 수행하다 다른 단에서 오류가 날수 있기 때문
+12. Admin processes 관리자 process, tool
+    + MSA Application 상태확인 용도
+    + Database의 Migrations이 잘 수행하는지 확인 등
+
+최근엔 여기서 +3가지 추가 **(about Pivotal)**
+
+
+
+Cloud Native Architecture
+
++ 확장 가능한 
+
++ 탄력적 
+
++ 오류나도 다른 서비스에 영향이 미치지 않음
+
++ *컨테이너기반* _ 시스템 || 서비스 단위의 패키지
+
++ 동적 관리 -> 변경 서비스 가 있다면 파악 가능
+
++ __CI__ (Continuous Integration) 통합서버, 소스관리, 빌드 tool, test tool 
+
+  ex) 젠킨스_CI/CD용 오픈 소스 git에서 데이터를 가져와 사용함.
+
++ 지속적인 배포 용이 Continuous Deployment(+Delivery) = __CD__
+
+
+
+---
+
+DevOps(Developments + Operations)
+
+-> engineer의 역할 많아짐 (Programming, Build, Deploy, Run the service)
+
+->매일 설계, 구현, 테스트를 한다. (매주X)
+
+
+
+Agile : 고객의 needs사항을 바로 반영하기 위함. (가장 큰 사용 요인)
+
+특징
+
+경량 프로세스
+
+cooperation biz, feedback
+
+Development Cycle 짧은 단위의 반복되는 개발 -> 개선사항 발생> 고객의 만족도> 퀄리티 향상> 지속적인 release
+
+문서를 통한 개발 방법론 X  / **실질적인 코딩을 통한 방법론 O**
+
+
+
+### Working Software
+
+
+
+
+
+---
+
+spring boot 상속관계설명(++ 제약조건 포함)
+
+implements(class -> interface상속)
+
+extends(class-> class)
+
+interface -> class **X**
+
+extends (interface -> interface)
+
+
+
+**인터페이스 완벽하게 구현!!**
+
+```java
+    @Override
+    public User removeUser(Integer id) {
+        // list, -> map(key, value), not ordering
+        // list -> ordering 지원가능 순차적인 데이터 참조
+        // map -> ordering 지원이 어려우나 key값을 참조해서 접근가능, duplicate 중복 허용
+            // HashMap, HashTable
+            // SortMap
+        // set -> set ordering, not duplicate 중복을 허용하지 않음
+        Iterator<User> iterator = list.iterator();
+        while(iterator.hasNext()){ // 메소드를 읽어올 요소 확인 false, true
+            User user = iterator.next(); // Object의 메소드를 읽어올 요소 확인 false, true
+            if(user.getId() == id){
+                // next로 읽어온 요소를 삭제 next 호출한 다음에 remove 를 선택적으로 사용한다.
+                iterator.remove();
+                return user;
+            }
+        }
+        return null;
+    }
+```
+
+---
+
+두번째 실습
+
+application.yml 
+
+```
+server:
+  port: 8088
+
+spring:
+  datasource:
+    url:  jdbc:mysql://localhost:3306/springboot
+    username: username 설정
+    password: password 설정
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.example.springbootmybatis.entity
+  mapper-locations: mapper/**/*.xml
+```
+
+
+
+UserMapper.xml 작성
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+// 해당 패키지내의 해당 인터페이스 클래스와 매핑해주겠다는 뜻
+// 그럼 nampespace에 작성한대로 클래스를 생성해줘야하고 데이터 정의를 할 예정
+<mapper namespace="com.example.springbootmybatis.repository.UserMapper">
+    <select id="selectAllUsers"
+            resultType="com.example.springbootmybatis.entity.Users">
+        select id, name, email, createAt from users
+        order by createAt desc
+    </select>
+    <select id="selectUserById"
+        resultType="com.example.springbootmybatis.entity.Users"
+        parameterType="string">
+        select id, name, email, createAt from users
+        where id=#{id}
+    </select>
+    <insert id="insertUser"
+            parameterType="com.example.springbootmybatis.entity.Users">
+        insert into users(id,name,email) values(#{id},#{name},#{email})
+    </insert>
+    <update id="updateUser">
+        update users set name=#{name}, email=#{email}, where  id=#{id}
+    </update>
+    <delete id="deleteUser">
+        delete from users where id=#{id}
+    </delete>
+</mapper>
+```
+
+
+
+
+
+---
+
+코드 참고
+
+https://www.springboottutorial.com/microservices-and-restful-services-with-spring-boot-for-beginners
+
