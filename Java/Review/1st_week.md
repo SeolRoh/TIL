@@ -440,6 +440,225 @@
     
 18. 인터페이스(1/3): 문법
 
+    + 강제하는 것
+
+    + abstract, final과 같이 대표적인 규제
+
+    + 어떤 객체가 있고 그 객체가 특정한 인터페이스를 사용한 다면 그 객체는 반드시 인터페이스의 메소드를 구현해야함!! 강제강제
+
+      ````java
+      interface I {
+      	public void z();
+      }
+      
+      class A implements I{
+      	public void z(); // 반드시 구현해야한다. 미구현시 빌드 X
+      }
+      // 클래스 에이는 인터페이스 I를 구현한다
+      ````
+
+      상속 -> extends	인터페이스->implements
+
+    + 인터페이스를 사용하는 이유는?
+
+      코드 예시
+
+      ```java
+      public interface Calculatable{
+      	public void setOperands(int first, int second, int third);
+      	public int sum();
+      	public int avg();
+      }
+      ```
+
+      ```java
+      class Calculator implements Calculatable{
+      	int first, second, third;
+      	public void setOperands(int first, int second, int third){
+      		this.first = first;
+      		this.second = second;
+      		this.third = third;
+      	}
+      	public int sum(){
+      		return this.first + this.second + this.third;
+      	}
+      	public int avg(){
+      		return (this.first + this.second + this.third)/ 3;
+      	}
+      	
+      }
+      ```
+
+      즉 interface는 각자의 목표를 위해 구현을 해야하지만 서로 짜는 로직이 다를 수 있으므로 이를 구성하는 메소드나 변수들을 지정해주고 이 틀에 맞추어 작성해주는 (다만 구체적이진 않고 메소드 정도로만??? )작성방법문이라고 보면된다. interface를 구현했으면 반드시 implements를 사용해 해당 인터페이스를 구현해야 한다.
+
+    + 인터페이스의 규칙
+
+      + **하나의 클래스가 여러개의 인터페이스를 구현할수 있다.!!!!! ** 콤마로하고 그대로하면됨
+      + 또 상속받은 인터페이스를 구현한다면 부모클래스의 객체와 인터페이스내에 작성한 객체들 모두 작성해줘야함!!
+      + 인터페이스의 멤버는 반드시 __public__ 임!
+
+    + 추상클래스와 인터페이스의 차이
+
+      + 추상클래스
+
+        : 일반적인 클래스
+
+        : 구체적인 로직이나 상태를 가지고 있을 수 가있음
+
+      + 인터페이스
+
+        : 클래스가 아님. 그냥 인터페이스임
+
+        : 구체적인 로직이나 상태를 못가짐 ex) 메소드를 넣어도 그안의 변수명들은 없음
+
+19. 다형성(1/6): 메소드와 다형성(Polymorphism), 클래스와 다형성
+
+    + 다형성은 하나의 메소드나 클래스가 있을 경우, 어떤 방식으로 동작하고 동작 되는지. 조작 방법은 같으나 이 조작으로 동작시키면 동작방법은 다르다. 
+
+      -> 키보드 누른다. -> 하지만 무엇을 누르냐? -> ESC 누르기 || ENTER 누르기 ||동시에누르기
+
+      -> 누르는 것은 같지만 결과는 달라짐  (비유는 비유일뿐!! 이해를 위함.)
+
+    + 다형성의 쉬운예제 == 오버로딩 (매개타입, 개수 , 같은 이름 다른 동작방법이여서)
+
+    +  클래스와 다형성
+
+      처음보면 요상해보이는 다형성 예제
+
+      ```java
+      class A{
+          public String x(){return "x";}
+      }
+      class B extends A {
+          public String y(){return "y";}
+      }
+      public class PolumorphismDemo1{
+      	public static void main(String[] args){
+      		A obj = new B();
+              obj.x(); // 정상적으로 실행 // class A에 x 메소드가 있어서
+              obj.y(); // 오류발생 //  class A에 y 메소드가 존재X라고 자바가 간주
+              //-------------------------------------------------------------
+              //이유: 데이터타입이 class A이기때문이다. 중요!!!!
+              //-------------------------------------------------------------
+      	}
+      }
+      ```
+
+      위의 예제를 수정한 코드
+
+      ```java
+      class A{
+          public String x(){return "A.x";}
+      }
+      class B extends A{
+          public String x(){return "B.x";}
+          public String y(){return "y";}
+      }
+      public class PolymorphismDemo2 {
+          public static void main(String[] args) {
+              A obj = new B();
+              System.out.println(obj.x());
+              
+              //예상 : A.x를 실행할 것이다.
+              //정답 : B.x를 실행
+              //이유 : 클래스 A의 행세를 하지만 메소드 X는 클래스B에 정의되어있는
+              //		메소드 x부분이 실행된다.
+              
+              //추가로 정의한것은 사용못한다. 하지만 상위 클래스에 있는 메소드를
+              //오버라이딩 한다면 해당 인스턴스를 호출하여 수행한다.
+              //즉 A클래스와 B클래스를 보면 동일한 x메소드를 가지고 있으니
+              // 하위클래스에있는 x메소드를 실행시켜서 답이 B.x가 된다.
+              
+           // 하지만 여기서 호출을 obj.y()를 println했다면 또 위의 예제처럼 에러가 난다.
+          }
+      }
+      ```
+
+      또다른 예제
+
+      ```java
+      class A{
+          public String x(){return "A.x";}
+      }
+      class B extends A{
+          public String x(){return "B.x";}
+          public String y(){return "y";}
+      }
+      class B2 extends A{
+          public String x(){return "B2.x";}
+      }
+      public class PolymorphismDemo3 {
+          public static void main(String[] args) {
+              A obj = new B();
+              A obj2 = new B2();
+              System.out.println(obj.x());
+              System.out.println(obj2.x());
+          }
+          
+          //맞추기
+          //예상 b.X, B2.x
+          //정답 b.x, B2.x
+      }
+      ```
+
+      =========================================================================
+
+      =========================================================================
+
+      **다형성의 꽃**  -> 이거 이해하면 다형성 마스터 + 반복적인 코드의 라인수 줄어든다.
+
+      ```java
+      public class CalculatorDemo {
+          public static void execute(Calculator cal){
+              System.out.println("실행결과");
+              cal.run();
+          }
+          public static void main(String[] args) { 
+              Calculator c1 = new CalculatorDecoPlus();
+              c1.setOprands(10, 20);
+               
+              Calculator c2 = new CalculatorDecoMinus();
+              c2.setOprands(10, 20);
+               
+              execute(c1);
+              execute(c2);
+          }
+      }
+      ```
+
+      =========================================================================
+
+      =========================================================================
+
+    + 인터페이스와 다형성
+
+      ```java
+      interface I {}
+      class A implements I {}
+      public class 다형성Demo2{
+      	public static void main(String[] args){
+              // class A를 인스턴스화
+      		I obj = new A();
+      	}
+      }
+      ```
+
+20. 예외1-문법(1/12): 예외란 무엇인가
+
+21. 예외2-예외던지기(6/12):예외의 강제
+
+22. 예외3-만들기(9/12):예외 만들기
+
+23. Object 클래스(1/5):소개 
+
+24. 상수와 enum(1/4):
+
+25. 참조(1/4):복제란?
+
+26. 제네릭(1/5):제네릭의 사용
+
+27. Collections Framework(1/9): Arraylist, set, Iterator, Map, Collection의 사용
+
 ------
 
 (참고 페이지)
