@@ -105,3 +105,49 @@ token:
    ```
 
    
+
+---
+
+10:39AM
+
+**시멘틱(Semantic security) 방법으로 암호화하기** 
+
+> bootstrap.yml
+> encrypt:
+> 	key: abcdefghijklmnopqrstu1234567890 
+>
+> ​    //이부분 키값이 바뀌는 것에따라서 오류 여부 Test하기 (not~~써있음)
+>
+> postman
+> http://localhost:8012/encrypt
+> POST
+> Body
+> raw
+> texts
+> Hi encrypt! 입력시 200OK
+> 해당 글 암호화 ==> 복사
+>
+> postman
+> POST
+> http://localhost:8012/decrypt
+> 복사한 것을 그대로 입력 
+> 그대로 Hi encrypt! 확인 가능
+
+그 다음 users-ws.yml 파일 수정
+
+```yaml
+
+login:
+    url:
+      path: /users/login
+      
+spring:
+    datasource:
+        url: jdbc:h2:mem:testdb
+        username: sa
+        % password: sa
+        % 위에서 포스트맨으로 encrypt되어 암호화 된것을 입력한다.
+        password: '{cipher}_____암호화된것_______'
+```
+
+후에 확인해서 보면 encrypt되어 입력한것이 decrypt되어 볼수 있다.
