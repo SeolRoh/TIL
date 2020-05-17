@@ -643,9 +643,72 @@
       }
       ```
 
-20. 예외1-문법(1/12): 예외란 무엇인가
+20. 예외1-문법(1/12): 예외란 무엇인가,뒷 수습
 
-21. 예외2-예외던지기(6/12):예외의 강제
+    + 예외 = 보안, 실패하지 않는 법
+
+      > 계산기 예제에서 operand(10,0) => divide 메소드로 전달 시 ====> 에러 발생
+      >
+      > 해당 에러가 발생하는 divide메소드 내의 객체를 try()문으로 감싸고
+      >
+      > catch(Exeption e){System.out.println("오류발생: "+ e.getMessage();)}로 만든다.
+
+      ```java
+      try{
+      	예외의 발생이 예상되는 로직
+      }catch(Exception e /*예외 클래스 인스턴스*/){
+      	예외가 발생했을 떄 실행되는 로직
+      }finally{
+          예외여부와 관계없이 실행되는 로직
+      }// finally는 try구문에서 예외가 발생하는 것과 상관없이
+       // 언제나 실행되는 로직이다.즉 try내의 구문 실행시 바로ㄱㄱ
+      ```
+
+    + **printStackTrace()** 
+
+      + 내부적으로 화면에 에러사항을 출력하는 메서드
+      + 밑에 두개의 메서드아 다르게 printStackTrace는 리턴값이 없다.
+      + 이 메서드를 호출하면 메서드가 내부적으로 예외결과를 화면에 출력한다. 가장 자세한 예외정보를 제공한다.
+
+    + toString()
+
+      + getMessage보다 더 자세한 예외정보를 제공한다.
+      + 0으로 나누고있을 때 `java.lang.ArithmeticException: `이 출력 되었는데 이는 수학적인 계산의 과정에서 발생하는 예외상황을 의미한다.
+
+    + getMessage()
+
+      + 오류에 대한 기본적인 내용을 출력해준다. 자세하지 않음.
+
+21. 예외2-예외던지기(6/12):예외의 던지기/강제
+
+    + 예외는 폭탄과 같다. = 던지기를 설명하는 듯하다.
+
+      ```java
+      //읽어오고싶은 파일
+      //여기서 해당 자바클래스 파일의 디렉토리에
+      //열고픈파일.txt가 반드시 있어야한다.
+      public class CheckedExceptionDemo{
+      	public static void main(String[] args){
+              BufferedReader bReader = null;
+              String input = null;
+              try{
+      			bReader = new BufferedReade(new FileReader("열고픈파일.txt"));
+              } catch(FileNotFoundException e){
+                  e.printStackTrace();
+              }
+              try{
+                  input = bReader.readLine();
+              }catch(IOExeption e){
+                  e.printStackTrace();
+              }
+              system.out.println(input);
+          }
+      }
+      ```
+
+      FileReader생성자 API DOCS [FileReader 생성자](http://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html#FileReader(java.io.File))
+
+    + 예외(7/12) 예외사슬
 
 22. 예외3-만들기(9/12):예외 만들기
 
