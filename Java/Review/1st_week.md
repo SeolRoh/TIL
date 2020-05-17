@@ -708,19 +708,109 @@
 
       FileReader생성자 API DOCS [FileReader 생성자](http://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html#FileReader(java.io.File))
 
-    + 예외(7/12) 예외사슬
+22. 예외2(7/12): 예외사슬
 
-22. 예외3-만들기(9/12):예외 만들기
+    + 예외 강제 형태 / 반대의 형태
+    + 나는 지금 사용하지 않으나 다음사용자에게 예외를 주는 방법
+    + 하지 않아도 된다는 상황이 어떻게 해서 이루어지는 지
 
-23. Object 클래스(1/5):소개 
+    + `new FileReader("out.txt") `
 
-24. 상수와 enum(1/4):
+      파일을 읽기 위한 생성자. out.txt라는 인자값 전달
 
-25. 참조(1/4):복제란?
+    + try~catch~finally
 
-26. 제네릭(1/5):제네릭의 사용
+      + <u>위의 try catch finally문 이외의 다른 방법이 있다.</u>
 
-27. Collections Framework(1/9): Arraylist, set, Iterator, Map, Collection의 사용
+        throw를 사용하는 것이다!!!!!
+
+        throw는 예외처리를 다음 사용자에게 넘기는 것이다. 
+
+        Q 다음 사용자는 누구일까?
+
+        ```java
+        //구조 B -> C -> Throw~~
+        class B {
+            void run(){
+                
+            }
+        }
+        class C{
+            void run(){
+                
+            }
+        }
+        public class ThrowExceptionDemo{
+        	public static void main(String[] args){
+        		C c = new C();
+        		c.run();
+        	}
+        }
+        // ThrowExceptionDemo.main(클래스 ThrowExceptionDemo의 메소드 main)은 C.run의 사용자이다. C.run은 B.run의 사용자이다. 반대로 B.run의 다음 사용자는 C.run 이고 C.run의 다음 사용자는 ThrowExceptionDemo.main이 되는 셈이다. 파일을 읽은 로직을 추가해보자!
+        ```
+
+      + 책임의 전가 throws
+
+        + class B의 void run()에 `throws` FileNotFoundException추가
+
+        ```java
+        //위의 코드들을 그대로 가져옴
+        class B { // 집어서 class C에게 예외처리를 던짐
+            void run() throws FileNotFoundException, IOException{
+                BufferedReader bReader = null;
+                String input = null;
+        //        try{
+        //			bReader = new BufferedReade(new FileReader("열고픈파일.txt"));
+        //        } catch(FileNotFoundException e){
+        //            e.printStackTrace();
+        //        }
+        //        try{
+        //            input = bReader.readLine();
+        //        }catch(IOExeption e){
+        //            e.printStackTrace();
+        //        }
+        //        system.out.println(input);
+                bReader = new BufferedReade(new FileReader("열고픈파일.txt"));
+                input = bReader.readLine();
+                system.out.println(input);
+                //예외를 class C로 던지니 확 줄었다.
+            }
+        }
+        class C{
+            void run(){
+                B b = new B();
+                
+                // 추가 부분
+                try{
+                    b.run();
+                }catch(FileNotFoundException e){
+                    e.printStackTrace();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        public class ThrowExceptionDemo{
+        	public static void main(String[] args){
+        		C c = new C();
+        		c.run();
+        	}
+        }
+        ```
+
+23. 예외3-만들기(9/12):예외 만들기
+
+    +  
+
+24. Object 클래스(1/5):소개 
+
+25. 상수와 enum(1/4):
+
+26. 참조(1/4):복제란?
+
+27. 제네릭(1/5):제네릭의 사용
+
+28. Collections Framework(1/9): Arraylist, set, Iterator, Map, Collection의 사용
 
 ------
 
