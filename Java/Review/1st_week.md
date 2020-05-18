@@ -800,7 +800,32 @@
 
 23. 예외3-만들기(9/12):예외 만들기
 
-    +  
+    + 주요 Exception들의 리스트
+
+      + illegalArgumentException
+
+        : 매개변수가 의도하지 않은 상황을 유발시킬 때
+
+      + illegalStateException
+
+        : 메서드를 호출하기 위한 상태가 아닐 때
+
+      + NullPointerException
+
+        : 매개 변수 값이 범위를 벗어날 때
+
+      + indexOutOfBoundsException
+
+        : 인덱스 매개 변수 값이 범위를 벗어날 때
+
+      + ArithmeticException
+
+        : 산술적인 연산에 오류가 있을 때
+
+    +  예외3-만들기(10/12): 예외의 여러가지 상황들
+
+       +  `throw new`
+       +  ---------------------- 이하 추후에 공부예정 https://opentutorials.org/course/1223/6228
 
 24. Object 클래스(1/5):소개 
 
