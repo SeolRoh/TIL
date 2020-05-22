@@ -49,8 +49,8 @@ spring:
       server:
         git:
           uri: https://github.com/SeolRoh/MyAppConfiguration.git
-          username: SeolRoh
-          password: 2726115a@
+          username: 
+          password: 
           clone-on-start: true
         native:
           search-locations: file:///${user.home}/work/dev
@@ -290,10 +290,25 @@ ENTRYPOINT ["java","-jar","MyAppApiUsers.jar"]
 
 C:\Users\HPE\IdeaProjects\myapp-api-users>docker build --tag=seolroh/users-microservice --force-rm=true .
 
-C:\Users\HPE\IdeaProjects\PhotoAlbumService-master>docker push seolroh/users-microservice
+C:\Users\HPE\IdeaProjects\myapp-api-users>docker push seolroh/users-microservice
 
-C:\Users\HPE\IdeaProjects\PhotoAlbumService-master>docker run -d --name users-msa -e "server.port=40000" -p 40000:40000 -e "spring.rabbitmq.host=172.17.0.2" -e "spring.zipkin.base-url=http://test:test@172.17.0.7:9411/" -e "eureka.client.serviceUrl.defaultZone=http://test:test@172.17.0.4:8010/eureka" -e "spring.cloud.config.uri=http://172.17.0.3:8012" seolroh/users-microservice
+C:\Users\HPE\IdeaProjects\myapp-api-users>docker run -d --name users-msa -e "server.port=40000" -p 40000:40000 -e "spring.rabbitmq.host=172.17.0.2" -e "spring.zipkin.base-url=http://test:test@172.17.0.7:9411/" -e "eureka.client.serviceUrl.defaultZone=http://test:test@172.17.0.4:8010/eureka" -e "spring.cloud.config.uri=http://172.17.0.3:8012" -e "spring.datasource.url=jdbc:mysql://172.17.0.9:3307/springboot?serverTimezone=Asia/Seoul" seolroh/users-microservice
 ```
+
+```
+docker run -d 
+-e "spring.zipkin.base-url=172.17.0.7:5673" 
+-e "spring.cloud.config.url=172.17.03:8012" 
+-e "spring.rabbitmq.host=172.17.0.2" 
+-e "eureka.client.serviceUrl.defaultZone=http://test:test@172.17.0.4:8010/eureka/" 
+-e "server.port=40000" 
+-e "spring.datasource.url=jdbc:mysql://172.17.0.8:3306/spring_db?serverTimezone=UTC&characterEncoding=UTF-8"
+-p 40000:40000 ry7791/users-microservice
+```
+
+
+
+
 
 yml file
 
@@ -390,5 +405,18 @@ docker run -d --name rabbitmq -p 5672:5672 -p 9090:15672 --restart=unless-stoppe
 
 ```powershell
 docker run -d -p 5673:5673 --name zipkin openzipkin/zipkin -p 9091:15673 --restart=unless-stopped -e ZIPKIN_DEFAULT_USER=admin -e ZIPKIN_DEFAULT_PASS=admin zipkin:management
+```
+
+
+
+### mysql
+
+```
+// 도커에 mysql 깔아서 spring_db 만들어주자
+docker pull mysql
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysql --name mysql1 mysql
+docker exec -i -t mysql1 bash
+mysql -u root -p
+create database spring_db;
 ```
 
