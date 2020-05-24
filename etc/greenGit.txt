@@ -1,0 +1,19 @@
+git commit --amend --no-edit --date "Sat 23 May 2020 15:22:39 KST"
+
+git log
+
+git rebase --interactive 수정하려고하는 커밋의 이전 커밋
+
+edit으로 수정
+
+git commit --amend --no-edit --date "Sat 23 May 2020 15:22:39 KST"
+
+git status
+
+git add ""
+
+git commit --amend
+
+git rebase --continue
+
+git push --force git push --force-with-lease
