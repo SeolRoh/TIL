@@ -175,14 +175,131 @@ Using CLASSPATH:       /home/vagrant/apache-tomcat-9.0.35/bin/bootstrap.jar:/hom
 Tomcat started
 ```
 
+---
 
+jenkins에서 tomcat 서버에 배포
+
+1. hello-world clone 해서 각자 계정 사용 (checkout)
+
+   ```zsh
+   git remote remove origin
+   git remote add 저장소_이름 주소
+   ```
+
+2. webapp 폴더의 jsp 파일을 변경
+
+3. jenkins 관리 -> 플러그인 관리 -> 설치가능
+
+   1. github
+   2. github integration
+
+4. 재시작 없이 설치하기 버튼 클릭 --나는 에러발생하지 않음
+
+   1. 에러 발생시 jenkins war파일 다운로드 -> data폴더로 복사
+   2. java -jar jenkins.war
+   3. war로 실행시 중간에 password 나옴 (특정 폴더 가서 볼 수도 있긴 함)
+
+
+
+maven /git 설치
+
+```powershell
+[vagrant@jenkins-server home]$ whereis git
+git: /usr/bin/git /usr/share/man/man1/git.1.gz
+[vagrant@jenkins-server home]$ mvn -version
+Apache Maven 3.0.5 (Red Hat 3.0.5-17)
+Maven home: /usr/share/maven
+Java version: 1.8.0_252, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-1127.el7.x86_64", arch: "amd64", family: "unix"
+```
+
+젠킨스 콘솔 출력 => 해당 반영사항 확인하기 (git --version/mvn --version)
+
+```
+Started by user admin
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/Jenkins_First_Project
+[Jenkins_First_Project] $ /bin/sh -xe /tmp/jenkins1211596742315771400.sh
++ echo 'Welcome ro DevOps project'
+Welcome ro DevOps project
++ git --version
+git version 1.8.3.1
++ mvn --version
+Apache Maven 3.0.5 (Red Hat 3.0.5-17)
+Maven home: /usr/share/maven
+Java version: 1.8.0_252, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-1127.el7.x86_64", arch: "amd64", family: "unix"
+Finished: SUCCESS
+```
+
+
+
+plugin 설치
+
+1. deply to container Plugin 2. maven integration
+
+
+
+후 새 Item 추가 =>The_Project_maven
+
+Git옵션에 해당 레파지토리 url 입력
+
+Build옵션에 `Goals and options` => `clean install package` 후 Apply => build now
+
+
+
+---
+
+동일하게 새 Item 생성 `Deploy_to_Tomcat_server`
+
+The_Project_maven 아이템처럼 그대로 한 상태에서
+
++ ![11](https://user-images.githubusercontent.com/34231229/82851746-c1b56980-9f3b-11ea-9d0c-d18078305000.JPG)
+
++ ![11](https://user-images.githubusercontent.com/34231229/82851777-e01b6500-9f3b-11ea-8e41-283b73731cdc.JPG)
+
++ Tomcat URL은 본인이 가진 Tomcat server의 IPAdress를 작성한다. 해당 서버 터미널에서 `ip a`명령어 사용
+
+  + `**/*.war`
+
+    - 모든 경로의 war파일
+
+  ![11](https://user-images.githubusercontent.com/34231229/82851993-84051080-9f3c-11ea-961c-0e3c572dbd89.JPG)
+
++ `빌드 후 조치 추가` => war을 이용한 배포를 하기 위해 `Depoy war/ear to a container`
+
+  ![11](https://user-images.githubusercontent.com/34231229/82851719-a2b6d780-9f3b-11ea-94b8-dea95093b218.JPG)
+
++ 성공
+
+  ![11](https://user-images.githubusercontent.com/34231229/82852816-e6f7a700-9f3e-11ea-973e-3b114a2e69bc.JPG)
+
+  
 
 ----
 
 메모장
 
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword ~~~~ 
-===>젠킨스 초기 페이지==> localhost:18080 접속
++ sudo cat /var/lib/jenkins/secrets/initialAdminPassword ~~~~ 
+  ===>젠킨스 초기 페이지==> localhost:18080 접속
 
-wget -p /sw http://mirror.navercorp.com/apache/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz
++ wget -p /sw http://mirror.navercorp.com/apache/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz
+
+---
+
+사용한 리눅스 명령어 메모장
+
+1. tail
+
+   + 파일의 끝단 10줄 출력 cat보다 조금 출력
+
+2. find ./ -name index.jsp
+
+3. whereis ./index.jsp
+
+   
 
