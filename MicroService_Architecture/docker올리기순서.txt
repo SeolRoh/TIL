@@ -1,0 +1,16 @@
+·¹ºø
+docker run -d --name rabbit-name-management --network photo-app-network -p 15672:15672 -p 5672:5672 -p 15671:15671 -p 5671:5671 -p 4369:4369 -e "RABBITMQ_DEFAULT_USER=admin" -e "RABBITMQ_DEFAULT_PASS=admin" rabbitmq:3-management
+¼³Á¤
+docker run -d -p 8012:8012 --name config-server --network photo-app-network -e "spring.rabbitmq.host=172.18.0.2"  -e "spring.profiles.active=default" chaus453/config-server
+À¯·¹Ä«
+docker run -d -p 8010:8010 --name eureka-server --network photo-app-network -e "spring.cloud.config.url=172.18.0.3:8012" chaus453/eureka-server
+Áì
+docker run -d -p 8011:8011 --name zuul-server --network photo-app-network -e "spring.cloud.config.url=172.18.0.3:8012" -e "spring.rabbitmq.host=172.18.0.2" -e "eureka.client.serviceUrl.defaultZone=http://test:test@172.18.0.4:8010/eureka/" chaus453/zuul-gateway
+ÁýÅ²
+docker run -d --network photo-app-network -p 9411:9411 openzipkin/zipkin
+mysql
+docker run -d -p 3306:3306 --network photo-app-network --name mysql-docker-container -e "MYSQL_ROOT_PASSWORD=mysql" -e "MYSQL_DATABASE=photo_app" -e "MYSQL_USER=kenneth" -e "MYSQL_PASSWORD=kenneth" mysql:latest
+¾Ù¹ü
+docker run -d --network photo-app-network -e "eureka.client.serviceUrl.defaultZone=http://test:test@172.18.0.4:8010/eureka/" -e "server.port=8989" -p 8989:8989 chaus453/albums-microservice
+À¯Àú
+docker run -d --network photo-app-network -e "spring.rabbitmq.host=172.18.0.2" -e "spring.zipkin.base-url=http://test:test@172.18.0.7:5673" -e "eureka.client.serviceUrl.defaultZone=http://test:test@172.18.0.4:8010/eureka/" -e "spring.cloud.config.uri=http://172.18.0.3:8012" -e "server.port=8928" -e "spring.datasource.url=jdbc:mysql://172.18.0.8:3306/springboot?serverTimezone=UTC&characterEncoding=UTF-8" -p 8928:8928 chaus453/users-microservice
