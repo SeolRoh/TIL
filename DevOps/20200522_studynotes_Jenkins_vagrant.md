@@ -85,8 +85,6 @@ Last login: Fri May 22 05:31:00 2020 from 10.0.2.2
 [vagrant@tomcat-server ~]$  140L, 3917C written
 [vagrant@tomcat-server ~]$ sudo systemctl restart sshd
 [vagrant@docker-server ~]$ exit
-
-
 ```
 
 
@@ -103,7 +101,7 @@ Last login: Fri May 22 05:31:00 2020 from 10.0.2.2
 
 다시 페이지에서 Build => Execute shell => Command `echo "Welcome to DevOps project"` 작성
 
-끝
+**끝**
 
 ---
 
@@ -131,6 +129,50 @@ OpenJDK Runtime Environment (build 1.8.0_252-b09)
 OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)
 [vagrant@tomcat-server ~]$ sudo yum install -y wget
 
+
+[vagrant@jenkins-server ~]$ vi ~/.bash_profile
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
+
+export JAVA_HOME
+
+PATH=$PATH:$JAVA_HOME
+
+export PATH
+~                                                                             ~                                                                             "~/.bash_profile" 17L, 305C
+```
+
+tomcat관리 계정생성
+
+sudo useradd tomcat
+
+sudo userpasswd tomcattomcat
+
+```
+# 생성한 계정으로 JAVA_HOME 및 PATH 설정 진행
+[root@localhost sw]# su - tomcat9jdk8
+[tomcat9jdk8@localhost ~]$ vi .bash_profile
+[출처] [Apache & TOMCAT 연동 3] CentOS7에 톰캣 설치|작성자 tawoo0
+```
+
+```
+[vagrant@tomcat-server bin]$ ./startup.sh
+Using CATALINA_BASE:   /home/vagrant/apache-tomcat-9.0.35
+Using CATALINA_HOME:   /home/vagrant/apache-tomcat-9.0.35
+Using CATALINA_TMPDIR: /home/vagrant/apache-tomcat-9.0.35/temp
+Using JRE_HOME:        /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
+Using CLASSPATH:       /home/vagrant/apache-tomcat-9.0.35/bin/bootstrap.jar:/home/vagrant/apache-tomcat-9.0.35/bin/tomcat-juli.jar
+Tomcat started
 ```
 
 
@@ -141,4 +183,6 @@ OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword ~~~~ 
 ===>젠킨스 초기 페이지==> localhost:18080 접속
+
+wget -p /sw http://mirror.navercorp.com/apache/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz
 
