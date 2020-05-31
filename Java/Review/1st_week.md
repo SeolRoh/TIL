@@ -835,6 +835,39 @@
 
 27. 제네릭(1/5):제네릭의 사용
 
+    + 제네릭은 클래스 내부에서 사용할 데이터 타입을 외부에서 지정하는 기법
+
+    + 즉, 클래스를 정의 할 때, 하단 코드의 info의 `데이터 타입을 확정하지 않고 인스턴스를 생성할 때 데이터 타입을 지정하는 기능` = 제네릭
+
+      ```java
+      class Person<T>{
+          public T info;
+      }
+       
+      public class GenericDemo {
+       
+          public static void main(String[] args) {
+              Person<String> p1 = new Person<String>();
+              Person<StringBuilder> p2 = new Person<StringBuilder>();
+          }
+       
+      }
+      ```
+
+    + 제네릭을 사용하는 이유
+
+      + 타입 안정성 
+      + 제네릭화
+      + 컴파일 단계에서 오류가 검출된다.
+      + 중복의 제거와 타입 안정성을 동시에 추구할 수 있게 된다.
+
+    + 33333333333333333333제네릭의 특성
+
+      + 메소드에 적용가능
+      + 복수의 제네릭
+      + 제네릭은 참조 데이터 타입에 대해서만 사용가능하다.(기본타입X)
+      + 
+
 28. Collections Framework(1/9): Arraylist, set, Iterator, Map, Collection의 사용
 
 ------
