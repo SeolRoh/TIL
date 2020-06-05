@@ -2,11 +2,7 @@
 
 Today I Learned
 
-### 1. TIL이란?
-
-> TIL은 **T**oday **I** **L**earned의 줄임말
-
-1. Algorithm 공부_ Java
+1. Java
 
 2. 데이터베이스 - mysql
 
@@ -24,9 +20,9 @@ Today I Learned
 
 9. JAVA - intelliJ
 
-10. Spring
+10. Spring / Spring boot
 
-11. final 프로젝트 - 비식별화
+11. final 프로젝트 - 비식별화(MSA기반)
 
     
 
