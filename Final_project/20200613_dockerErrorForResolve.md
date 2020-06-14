@@ -8,6 +8,14 @@
 >
 > Docker위에 올리면 회원가입창 에러 발생!
 
+```
+This application has no explicit mapping for /error, so you are seeing this as a fallback. 500
+```
+
+여기서 /error가 진짜 슬래시에러인줄 몰랐다.,,,,,, 헤메고 헤멤.
+
+
+
 문제 찾기
 
 회원가입창 에러 
