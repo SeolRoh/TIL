@@ -12,6 +12,8 @@
 This application has no explicit mapping for /error, so you are seeing this as a fallback. 500
 ```
 
+![dockerError](https://user-images.githubusercontent.com/34231229/84608238-6a783880-aeec-11ea-8de8-af1e4ef6b55f.JPG)
+
 여기서 /error가 진짜 슬래시에러인줄 몰랐다.,,,,,, 헤메고 헤멤.
 
 
