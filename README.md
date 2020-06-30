@@ -18,27 +18,18 @@ https://github.com/lsy0566/Front_DS - RESTful web services Project부분
 
 
 
-1. Java
-
-2. 데이터베이스 - mysql
-
-3. 리눅스
-
-4. 오픈스택으로 구현하는 클라우드 컴퓨팅
-
-5. Docker와 Kubernetis
-
-6. javascript
-
-7. 기타 - 모듈 프로젝트
-
-8. React
-
+1. [Java](https://github.com/SeolRoh/TIL/tree/master/Java)
+2. [데이터베이스 - mysql](https://github.com/SeolRoh/TIL/tree/master/mysql)
+3. [linux](https://github.com/SeolRoh/TIL/tree/master/linux)
+4. [오픈스택으로 구현하는 클라우드 컴퓨팅](https://github.com/SeolRoh/TIL/tree/master/Private_Cloud_Developement)
+5. [Docker](https://github.com/SeolRoh/TIL/tree/master/Docker)와 [Kubernetis](https://github.com/SeolRoh/TIL/tree/master/K8s)
+6. [javascript](https://github.com/SeolRoh/TIL/tree/master/javascript)
+7. [기타 - 모듈 프로젝트](https://github.com/SeolRoh/TIL/tree/master/Module_project)
+8. [React](https://github.com/SeolRoh/TIL/tree/master/React)
 9. JAVA - intelliJ
-
-10. Spring / Spring boot
-
-11. final 
-
-    
+10. [Spring / Spring boot](https://github.com/SeolRoh/TIL/tree/master/Spring)
+11. [Final_project](https://github.com/SeolRoh/TIL/tree/master/Final_project) 
+12. [READ_The_Book](https://github.com/SeolRoh/TIL/tree/master/READ_The_Book)
+    + 클라우드 컴퓨팅 (토마스 얼, 자이엄 마흐무드, 리카르도 푸티니 지음)
+    + 스프링 마이크로 서비스 코딩 공작소 (존 카넬 지음)
 
