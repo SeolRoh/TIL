@@ -58,3 +58,45 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
   + Division(나누기연산)
 
     : 기준 릴레이션에서 나누는 릴레이션이 가진 속성과 동일한 값을 가지는 튜플을 추출하고나누는 릴레이션의 속성을 삭제후 중복된 튜플을 제거.
+  
++ SQL문 실행순서
+
+  1. Parsing(파싱)
+
+     : SQL문 문법을 확인 후 구문분석 함
+
+     : 구문분서한 SQL문은 Library Cache에 저장함.
+
+  2.  Execution(실행)
+
+     : Optimizer가 수립한 실행 계획에 따라 SQL 실행
+
+  3.  Fetch(인출)
+
+     : DATA READ 후 SEND
+
++ Data Definition Language(DDL)
+
+  + Create Table
+
+    + 새 Table 생성
+
+    + 생성하면 기본키 / 외래키 / 제약사항 등을 설정가능
+
+      Option : Constraint, number(10,2), default sysdate, On Delete Cascade
+
+  + Alter Table
+
+    + 생성된 Table 변경
+
+    + Column을 추가 / 변경 / 삭제
+
+      Option : Rename To, ADD, MODIFY, DROP COLUMN, Rename Column To
+
+  + Drop Table
+
+    + 해당 Table 삭제
+
+    + Table의 Data Structure 뿐만아니라 저장된 DATA도 모두 삭제
+
+      Option : CASCADE CONSTRAINT
