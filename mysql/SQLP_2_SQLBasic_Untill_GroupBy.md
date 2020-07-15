@@ -100,3 +100,42 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
     + Table의 Data Structure 뿐만아니라 저장된 DATA도 모두 삭제
 
       Option : CASCADE CONSTRAINT
+    
+  + 예시) Table Create 1
+  
+    ```sql
+    CREATE TABLE DEPT(
+        deptno varchar2(4) primary key,
+        deptname varchar2(20)
+    );
+    CREATE TABLE EMP(
+    	empno		number(10),
+        ename		varchar2(20),
+        sal			number(10,2)	default	0,
+        deptno		varchar2(4)		not null,
+        createdate	date			default		sysdate,
+        constraint	emppk			primary key(empno),
+        constraint	deptfk			foreign key(deptno)
+        							reference dept(deptno)
+    );
+    ```
+  
+    + number(10,2)
+  
+      : 해당 sal Column을 소수점 2번째 자리까지 저장.
+  
+    + constraint emppk primary key(empno, ename)
+  
+      : pk가 두개 일때  'emppk'라는 일므으로 지정
+  
+    + constraint deptfk foreign key(deptno) reference dept(deptno)
+  
+      : DEPT table의 deptno Column을 참조하여 EMO table의 deptno를 'deptfk' 라는 이름의 **외래키**로 생성
+  
+      : 외래키가 기본키를 reference
+  
+    + sysdate
+  
+      : 오늘의 날짜를 조회. 
+  
+      : default Option으로 오늘 날짜를 기본 값으로 입력함.
