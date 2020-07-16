@@ -177,6 +177,7 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
            constraint	emppk			primary key(empno),
            constraint	deptfk			foreign key(deptno)
            							reference dept(deptno)
+           							ON DELETE CASCADE
        );
        
        INCERT INTO EMP VALUES ('100', 'AAA', 1000, '1000', sysdate);
