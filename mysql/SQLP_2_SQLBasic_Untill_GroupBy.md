@@ -125,11 +125,11 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
     );
     ```
 
-    + number(10,2)
+    + `number(10,2)`
 
       : 해당 sal Column을 소수점 2번째 자리까지 저장.
 
-    + constraint emppk primary key(empno, ename)
+    + `constraint` emppk primary key(empno, ename)
 
       : pk가 두개 일때  'emppk'라는 일므으로 지정
 
@@ -139,19 +139,19 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
 
       : 외래키가 기본키를 reference
 
-    + sysdate
+    + `sysdate`
 
       : 오늘의 날짜를 조회. 
 
       : default Option으로 오늘 날짜를 기본 값으로 입력함.
     
-  + 예시) Table Create 2 CASCADE
+  + 예시) Table Create 2 `CASCADE`
 
     1. DEPT Master table 생성 및 입력(Incert~)
 
     2. EMP Slave table 생성 및 입력
 
-       + Option ' On Delete Cascade'
+       + Option ' `On Delete Cascade`'
 
        + DEPT Master table에서 data 삭제하면 어떻게 될까?
 
@@ -186,4 +186,43 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
        DELETE FROM DEPT WHERE deptno = '10000';
        ```
 
-       
+  + 예시) Table ALTER 1 `RENAME TO`
+  
+    ```sql
+    ALTER TABLE EMP
+    	RENAME TO NEW_EMP;
+    ```
+  
+  + 예시) Table ALTER 2 `ADD` 추가-column
+  
+    ```sql
+    ALTER TABLE EMP
+    	ADD (age number(2) default 1);
+    ```
+  
+  + 예시) Table ALTER 3 `MODIFY`
+  
+    + 주의사항
+  
+      : Column의 Data Type 변경시 기존 Date가 있다면 Error 발생
+  
+    ```sql
+    ALTER TABLE EMP
+    	MODIFY (ename varchar2(40) not null);
+    ```
+  
+  + 예시) Table ALTER 4 `DROP COLUMN`
+  
+    ```sql
+    ALTER TABLE EMP
+    	DROP COLUMN age;
+    ```
+  
+  + 예시) Table ALTER 5 `RENAME COLUMN ~ TO ~`
+  
+    ```sql
+    ALTER TABLE EMP
+    	RENAME COLUMN ename TO new_ename;
+    ```
+  
+    
