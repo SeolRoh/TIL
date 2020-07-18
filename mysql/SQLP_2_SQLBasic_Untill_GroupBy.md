@@ -225,4 +225,55 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
     	RENAME COLUMN ename TO new_ename;
     ```
   
+  + 예시) Table DELETE 1 (data 전부 삭제)
+  
+    ```mysql
+    DROP TABLE EMP;
+    ```
+  
+  + 예시) Table DELETE 2 `CASCADE CONSTRAINT`
+  
+    ```sql
+    DROP TABLE EMP CASCADE CONSTRAINT;
+    ```
+  
+    : 참조된 제약사항도 모두 삭제
+  
++ VIEW
+
+  : Table로부터 유도된 가상의 Table
+
+  : 실제 Data는 없고, table을 참조해 원하는 칼럼만 조회가능
+
+  : Data Dictionary에 SQL문 형태로 저장하고 실행시에 참조됨
+
++ VIEW 특징
+
+  : 참조한 Table변경되면 VIEW도 변경됨
+
+  : VIEW 검색과 별개로, 입력 / 수정 / 삭제에는 제약 발생.
+
+  : 특정 COLUMN만 조회시켜서 `보안성`을 향상 시킴.
+
+  : ALTER문을 사용한 변경 XXX
+
+  + 예시) VIEW 생성
+
+    ```sql
+    CREATE VIEW T_EMP AS
+    	SELETE * FROP EMP;
+    ```
+
+  + 예시) VIEW  조회
+
+    ```sql
+    SELETE * FROM T_EMP;
+    ```
+
+  + 예시) VIEW  삭제
+
+    ```sql
+    DROP VIEW T_EMP;
+    ```
+
     
