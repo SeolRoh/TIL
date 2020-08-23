@@ -6,6 +6,11 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
 >
 > 1. Column - 칼럼, Attibute, 속성
 > 2. Tuple - 튜플, Row, 행
+> 3. 참조 무결성 위배 - DEPT TABLE에는 deptno가 없고 EMP TABLE에는 deptno가 있는 경우
+
+> TIP
+>
+> 1. Table 구조 확인 => DESC EMP;
 
 + RDB(Relation 사용)
 
@@ -102,7 +107,7 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
       Option : CASCADE CONSTRAINT
     
   + 예시) Table Create 1
-  
+
     ```sql
     CREATE TABLE DEPT(
         deptno varchar2(4) primary key,
@@ -119,23 +124,65 @@ SQL 기본 - SQL종류,  WHERE문 사용방법, GROUP 연산, 내장형 함수 �
         							reference dept(deptno)
     );
     ```
-  
+
     + number(10,2)
-  
+
       : 해당 sal Column을 소수점 2번째 자리까지 저장.
-  
+
     + constraint emppk primary key(empno, ename)
-  
+
       : pk가 두개 일때  'emppk'라는 일므으로 지정
-  
+
     + constraint deptfk foreign key(deptno) reference dept(deptno)
-  
+
       : DEPT table의 deptno Column을 참조하여 EMO table의 deptno를 'deptfk' 라는 이름의 **외래키**로 생성
-  
+
       : 외래키가 기본키를 reference
-  
+
     + sysdate
-  
+
       : 오늘의 날짜를 조회. 
-  
+
       : default Option으로 오늘 날짜를 기본 값으로 입력함.
+    
+  + 예시) Table Create 2 CASCADE
+
+    1. DEPT Master table 생성 및 입력(Incert~)
+
+    2. EMP Slave table 생성 및 입력
+
+       + Option ' On Delete Cascade'
+
+       + DEPT Master table에서 data 삭제하면 어떻게 될까?
+
+         > ON DELETE CASCADE는 자신이 참조하는 Table (DEPT)의 데이터가 삭제되면 자동으로 자신(EMP)도 삭제되는 옵션.
+         >
+         > '참조 무결성' 준수
+
+       ```sql
+       CREATE TABLE DEPT(
+           deptno varchar2(4) primary key,
+           deptname varchar2(20)
+       );
+       
+       INCERT INTO DEPT VALUES ('1000', '인사팀');
+       INCERT INTO DEPT VALUES ('1001', '총무팀');
+       
+       CREATE TABLE EMP(
+       	empno		number(10),
+           ename		varchar2(20),
+           sal			number(10,2)	default	0,
+           deptno		varchar2(4)		not null,
+           createdate	date			default		sysdate,
+           constraint	emppk			primary key(empno),
+           constraint	deptfk			foreign key(deptno)
+           							reference dept(deptno)
+       );
+       
+       INCERT INTO EMP VALUES ('100', 'AAA', 1000, '1000', sysdate);
+       INCERT INTO EMP VALUES ('101', 'BBB', 2000, '1001', sysdate);
+       
+       DELETE FROM DEPT WHERE deptno = '10000';
+       ```
+
+       
